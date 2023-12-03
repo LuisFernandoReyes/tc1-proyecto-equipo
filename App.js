@@ -1,7 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar, setStatusBarBackgroundColor } from 'expo-status-bar';
 import React, { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
-import { PaperProvider, Button, IconButton, RadioButton } from 'react-native-paper';
+import { PaperProvider, Button, IconButton, RadioButton, Divider } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import AuthContext from './src/context/AuthContext'
 import TaskManagerScreen from './src/components/TaskManagerScreen';
@@ -56,6 +56,7 @@ export default function App() {
   };
 
   return (
+  
     <AuthContext.Provider value={authData}>
       <PaperProvider>
         {auth ? (
@@ -66,7 +67,6 @@ export default function App() {
               <Text style={styles.container}>Bienvenid@s</Text>
               <Text style={styles.container}>Este es el gestor de tareas para el semestre 2023B</Text>
               <Button onPress={showTaskManagerScreen} style={styles.container}>Gestor de Tareas</Button>
-              {/* Otros elementos de la Zona de Usuarios */}
             </>
           )
         ) : (
@@ -74,14 +74,19 @@ export default function App() {
         )}
       </PaperProvider>
     </AuthContext.Provider>
+
   );
 }
-
 const styles = StyleSheet.create({
   container: {
+    marginTop: 120,
     flex: 1,
     alignItems:'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
+    fontFamily: 'arial',
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 24,
   },
 });

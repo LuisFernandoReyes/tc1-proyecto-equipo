@@ -42,7 +42,6 @@ export default function LoginForm(props) {
 
   return (
     <View>
-      <Text>Login Form</Text>
       <TextInput
         label="Email"
         style={formStyles.input}

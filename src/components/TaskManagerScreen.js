@@ -11,7 +11,6 @@ const TaskManagerScreen = ({ onCancel }) => {
 
   const handleAddTask = (newTask) => {
     if (isEditing) {
-      // Si está en modo de edición, actualiza la tarea existente
       const updatedTasks = tasks.map((task) =>
         task.id === selectedTask.id ? { ...task, ...newTask } : task
       );
@@ -19,7 +18,6 @@ const TaskManagerScreen = ({ onCancel }) => {
       setSelectedTask(null);
       setIsEditing(false);
     } else {
-      // Si no está en modo de edición, agrega una nueva tarea
       setTasks([...tasks, newTask]);
     }
   };
@@ -28,34 +26,32 @@ const TaskManagerScreen = ({ onCancel }) => {
     const updatedTasks = tasks.filter((t) => t.id !== task.id);
     setTasks(updatedTasks);
     setSelectedTask(null);
-    setIsEditing(false); // Limpiar el modo de edición si se elimina la tarea seleccionada
+    setIsEditing(false);
   };
 
   const handleSelectTask = (task) => {
     setSelectedTask(task);
-    setIsEditing(true); // Activar el modo de edición al seleccionar una tarea
+    setIsEditing(true);
   };
 
   const handleEditTask = () => {
-    // La lógica de edición ahora está en handleAddTask
     console.log('Editar tarea:', selectedTask);
   };
 
   const handleOtherAction = () => {
-    // Aquí puedes implementar otras acciones con la tarea seleccionada
     console.log('Otra acción con la tarea:', selectedTask);
   };
 
   return (
-    <View style={layoutStyle.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>Gestor de Tareas</Text>
       <TaskForm onAdd={handleAddTask} selectedTask={selectedTask} />
       <TaskList tasks={tasks} onDelete={handleDeleteTask} onSelect={handleSelectTask} />
       {selectedTask && (
         <View style={styles.selectedTaskContainer}>
-          <Text>{`Tarea seleccionada: ${selectedTask.title}`}</Text>
-          <Text>{`Descripción: ${selectedTask.description}`}</Text>
-          <Text>{`Fecha: ${selectedTask.date}`}</Text>
+          <Text style={styles.selectedTaskText}>{`Tarea seleccionada: ${selectedTask.title}`}</Text>
+          <Text style={styles.selectedTaskText}>{`Descripción: ${selectedTask.description}`}</Text>
+          <Text style={styles.selectedTaskText}>{`Fecha: ${selectedTask.date}`}</Text>
           <View style={styles.buttonContainer}>
             <Button title="Editar" onPress={handleEditTask} />
             <Button title="Otra acción" onPress={handleOtherAction} />
@@ -70,6 +66,12 @@ const TaskManagerScreen = ({ onCancel }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#fff',
+    marginTop: 70,
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -78,6 +80,9 @@ const styles = StyleSheet.create({
   selectedTaskContainer: {
     marginVertical: 10,
     paddingHorizontal: 10,
+  },
+  selectedTaskText: {
+    marginBottom: 5,
   },
   buttonContainer: {
     backgroundColor: '#DDDDDD',
