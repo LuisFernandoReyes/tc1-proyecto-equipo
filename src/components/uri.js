@@ -1,0 +1,1 @@
+//mongodb+srv://admin:admin123456@tc1-2023b.x3sbder.mongodb.net/?retryWrites=true&w=majority

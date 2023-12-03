@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  strapi:
+    container_name: strapi-tc1
+    image: strapi/strapi
+    environment:
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=tc1-2023b.x3sbder.mongodb.net
+      - DATABASE_PORT=27017
+      - DATABASE_SSL=true
+      - DATABASE_SRV=true
+      - DATABASE_NAME=tc1-2023b
+      - DATABASE_USERNAME=admin
+      - DATABASE_PASSWORD=admin123456
+    ports:
+      - 1337:1337    
+   
