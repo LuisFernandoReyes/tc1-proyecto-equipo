@@ -6,7 +6,6 @@ const TaskForm = ({ onAdd, selectedTask }) => {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
 
-  // useEffect para actualizar los campos del formulario cuando se selecciona una tarea
   useEffect(() => {
     if (selectedTask) {
       setTitle(selectedTask.title || '');
